@@ -1,0 +1,25 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: mock-server
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # enable all actuators which includes http-trace
+
+# log request and response to console output.
+logging.level.org.zalando.logbook: TRACE
+
+# below yml format should stay as is. Other yml formats does not work. possibly a bug.
+logbook.exclude[0]: "**/v2/api-docs"
+logbook.exclude[1]: "**/swagger-ui.html"
+logbook.exclude[2]: "**/webjars/**"
+logbook.exclude[3]: "**/swagger-resources/**"
+logbook.exclude[4]: "**/csrf"
+logbook.exclude[5]: "**/"
+logbook.exclude[6]: "/actuator**"
+logbook.exclude[7]: "/favicon.ico"
